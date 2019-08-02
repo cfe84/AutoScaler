@@ -2,6 +2,8 @@ This is an autoscaler for Kubernetes deployments built in C#. Based
 on a metric that can be extended (out of the box, it's using Azure Storage Queues
 message count), it will scale the deployment replica count up or down.
 
+Companion blog post [there](https://feval.ca/posts/k8s-autoscaling/).
+
 It's mainly intended for demo purposes and can be used
 at your own risk.
 
