@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{.Values.namespace}}
+  name: {{.Values.serviceName}}
+  labels:
+    app: {{.Values.serviceName}}
+spec:
+  selector:
+    matchLabels:
+      app: {{.Values.serviceName}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.serviceName}}
+    spec:
+      containers:
+      - name: {{.Values.serviceName}}
+        image: {{.Values.imageName}}
+        env:
+        - name: CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: storage
+              key: connectionString
+        - name: NAMESPACE
+          value: "{{.Values.namespace}}"
+        - name: DEPLOYMENT
+          value: "{{.Values.deployment}}"
+        - name: QUEUE_NAME
+          value: "messages"
+        - name: ENVIRONMENT
+          value: "Production"
+        - name: REPLICAS_MIN
+          value: "{{.Values.replicasMin}}"
+        - name: REPLICAS_MAX
+          value: "{{.Values.replicasMax}}"
+        - name: TARGET_MIN
+          value: "{{.Values.targetMin}}"
+        - name: TARGET_MAX
+          value: "{{.Values.targetMax}}"
+        - name: POLLING_INTERVAL_S
+          value: "{{.Values.pollingIntervalSeconds}}"
+        - name: SCALE_INTERVAL_S
+          value: "{{.Values.scaleIntervalSeconds}}"
+        

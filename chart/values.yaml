@@ -1,0 +1,8 @@
+serviceName: autoscaler
+imageName: cfe84/autoscaler
+replicasMin: 1
+replicasMax: 10
+targetMin: 10
+targetMax: 100
+pollingIntervalSeconds: 10
+scaleIntervalSeconds: 60

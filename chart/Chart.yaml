@@ -1,0 +1,4 @@
+name: autoscaler
+version: v1.0.0
+appVersion: v1.0.0
+description: Autoscaler service
